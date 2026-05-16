@@ -13,7 +13,7 @@ else:
 #function to generate text using google API
 def Generate_Text(text):
     #call generative model from google AI
-    model = genai.GenerativeModel('gemini-3-flash-preview')
+    model = genai.GenerativeModel('gemini-1.5-flash')
     #generate response from Gemini
     response = model.generate_content(text)
     return response.text
