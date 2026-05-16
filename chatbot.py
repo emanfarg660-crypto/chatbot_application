@@ -1,14 +1,14 @@
 
 import google.generativeai as genai
 import streamlit as st
-
-api = 'Google_Api_Key'
+try:
+    api = st.secrets["GOOGLE_API_KEY"]
+except KeyError:
+    st.error('⚠️ Google API Key not exist add it inStreamlit Secrets')
+    st.stop()
 
 #configure google generative ai
-if api:
-    genai.configure(api_key= api)
-else:
-    st.error('Your API is Not Found')
+genai.configure(api_key=api)
 
 #function to generate text using google API
 def Generate_Text(text):
